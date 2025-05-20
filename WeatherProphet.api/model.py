@@ -1,18 +1,16 @@
 import torch.nn as nn
-import torch.optim as optim
+import torch.nn.functional as F
 
-class WeatherPredictorLSTM(nn.Module):
-    def __init__(self, input_size, hidden_size, num_layers, output_size):
-        super(WeatherPredictorLSTM, self).__init__()
-        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)
-        self.fc = nn.Linear(hidden_size, output_size)
-
+class WeatherProphet(nn.Module):
+    def __init__(self):
+        super(WeatherProphet, self).__init__()
+        
+        self.fc1 = nn.Linear(5, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.fc3 = nn.Linear(64, 10)
+        
     def forward(self, x):
-        lstm_out, _ = self.lstm(x)
-        output = self.fc(lstm_out[:, -1, :])
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        output = self.fc3(x)
         return output
-
-model = WeatherPredictorLSTM(input_size=4, hidden_size=64, num_layers=2, output_size=10)
-
-criterion = nn.MSELoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)

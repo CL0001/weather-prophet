@@ -1,16 +1,24 @@
 import os
 import datetime
 import requests
+
+import torch
+
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 from dotenv import load_dotenv
 
+from model import WeatherProphet
 from helper_functions import format_response, format_query, format_for_database
 from database import *
 
 load_dotenv()
+
+model = WeatherProphet()
+model.load_state_dict(torch.load("weather_prophet_model.pth", weights_only=False))
+model.eval()
 
 app = FastAPI()
 location = Nominatim(user_agent="Geopy Library")
@@ -46,7 +54,7 @@ def city_weather_data(name: str, db: Session = Depends(get_db)):
             if city_stats.status_code != 200:
                 raise HTTPException(status_code=city_stats.status_code, detail="Failed to fetch weather data")
 
-            formatted_data = format_response(city_stats.json())
+            formatted_data = format_response(city_stats.json(), model)
 
             new_city_data = format_for_database(formatted_data)
 
