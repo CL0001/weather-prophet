@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSplitter>
+
 #include "leftpanel.h"
 #include "rightpanel.h"
 
@@ -11,9 +13,10 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() = default;
 
 private:
+    QSplitter* splitter;
     LeftPanel* leftPanel;
     RightPanel* rightPanel;
 };

@@ -5,7 +5,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    QSplitter* splitter = new QSplitter(this);
+    splitter = new QSplitter(this);
     splitter->setStyleSheet("background: rgb(69, 69, 69);");
 
     leftPanel = new LeftPanel(splitter);
@@ -25,4 +25,3 @@ MainWindow::MainWindow(QWidget *parent)
     setMinimumSize(1600, 900);
 }
 
-MainWindow::~MainWindow() {}
