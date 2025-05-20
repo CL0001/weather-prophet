@@ -5,65 +5,49 @@
 
 
 ## About
-Weather Prophet is a weather forecasting application developed as my vocational graduation thesis. This project allowed me to gain hands-on experience with C++ and the Qt framework, as I am passionate about C++ development. Qt provides seamless integration through Qt Creator and offers built-in networking support, making it an excellent choice for rapid application development.
+Weather Prophet is a weather forecasting application developed as my vocational graduation thesis. This project allowed me to gain hands-on experience with C++ and the Qt framework, as I am passionate about C++ development.
+Qt provides seamless integration through Qt Creator and offers built-in networking support, making it an excellent choice for rapid application development.
 
-The application consists of a C++ frontend built with Qt and a Python backend using FastAPI. The backend collects and stores weather data to generate five-day forecasts. Users can search for any city worldwide with an autofill suggestion feature, and the application displays detailed weather and location data.
+The application consists of a C++ frontend built with QtWidgets and a Python backend using FastAPI framework. The backend collects and stores weather data to generate five-day forecasts.
+Users can search for any city worldwide with an autofill suggestion feature, and the application displays detailed weather and location data.
 
 
 ## Tech Stack
-- C++ with Qt framework for the application
-- Python with FastAPI, PyTorch, and Docker for the REST API
-- SQLite for data storage
+**Application:** C++ with Qt framework
+
+**REST API:** Python with FastAPI, PyTorch, and Docker
+
+**Database:** SQLite
 
 
 ## Integration Process
-The application is built using QtWidgets, as I found it more intuitive compared to QtQuick. This choice allowed me to develop the UI in a pure C++ approach rather than learning QML. As a result, the application's interface is simple but functional.
+I built the application using QtWidgets because I found it more intuitive and closer to standard C++ than QtQuick. This way, I was able to design the UI without learning QML and focus on writing everything in C++.
+The result is a simple but functional interface that meets the basic needs of the app.
 
-<<<<<<< HEAD
-To optimize performance and minimize the executable size, I used Qt Resource Compiler (qrc) to embed a list of cities for autofill directly into the application. Instead of storing weather data locally, the application fetches data from the REST API. When a user selects a city, a request is sent to the API, which retrieves the latest weather information, processes it through a prediction model, and returns the forecast for display.
+To optimize performance and reduce the executable size, I used the Qt Resource Compiler (qrc) to embed a list of cities directly into the application for the search bar autofill feature.
+Instead of storing weather data locally, the application fetches it from a REST API. The REST API is responsible for fetching, parsing, and weather prediction to provide accurate weather information. 
 
-To avoid redundant calculations and reduce server load, forecast data for each city and date is cached in the database once retrieved, ensuring faster responses for future queries.
-
-
-## Installation
-The latest executable build of Weather Prophet is available for download in the Releases section.
-
-
-## Project Setup
-1. Clone the Repository
-Clone the repository using Git or download it as a ZIP file:
-```bash
-git clone https://github.com/CL0001/weather-prophet.git
-```
-2. Run the REST API with Docker
-Navigate to the WeatherProphet.api directory and build the Docker container:
-=======
-To optimize performance and minimize the executable size, I used Qt Resource Compiler (qrc) to embed a list of cities for autofill directly into the application. Instead of storing weather data locally, the application fetches data from the REST API. When a user selects a city, a request is sent to the API, which retrieves the latest weather information, processes it through a prediction model, and returns the forecast with rest of the data for display.
-
-To avoid redundant calculations and reduce server load, forecast data for each city and date is cached in the database once retrieved, ensuring faster responses for future queries. Additionally, the data is stored to further improve the model's accuracy over time.
+To avoid redundant calculations and reduce server load, forecast data for each city and date is cached in the database once per day. While this approach isn't ideal for the most accurate weather updates, it was a practical choice due to resource constraints.
+It still ensures faster responses for future queries and can be easily adjusted later if needed.
 
 
 ## Installation
 The latest executable build of Weather Prophet is available for download in the [Releases section](https://github.com/CL0001/weather-prophet/releases).
 
-
 ## Project Setup
-1. Clone the Repository using Git or download it as a ZIP file:
+### 1. Get the Source
+Clone the Repository using Git or download it as a ZIP file:
 ```bash
 git clone https://github.com/CL0001/weather-prophet.git
 ```
-2. Run the REST API with Docker, navigate to the `WeatherProphet.api` directory and build the Docker container:
->>>>>>> ffbd62125087d6a0b582cff57f0493da1e1d70c0
+
+### 2. Run the REST API with Docker
+Navigate to the `WeatherProphet.api` directory and build the Docker container, note this may take a few minutes:
 ```bash
 docker build -t weather-prophet-api .
-docker run -d --name weather-prophet-api -p 8080:80 weather-prophet-api
+docker run -d -p 8080:80 weather-prophet-api
 ```
-3. Open and Build the Application in QtCreator
-    1. Open QtCreator.
-<<<<<<< HEAD
-    2. Click "Open Project" and select CMakeLists.txt from the WeatherProphet.app directory.
-    3. Configure the project as needed, then build and run it.
-=======
-    2. Click **"Open Project"** and select `CMakeLists.txt` from the `WeatherProphet.app` directory.
-    3. Configure the project as needed, then build and run it.
->>>>>>> ffbd62125087d6a0b582cff57f0493da1e1d70c0
+### 3. Open and Build the Application in QtCreator
+1. Open QtCreator.
+2. Click **"Open Project"** and select `CMakeLists.txt` from the `WeatherProphet.app` directory
+3. Configure the project as needed, then build and run it.
