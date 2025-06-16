@@ -1,7 +1,7 @@
 # Weather Prophet – Weather Forecasts and Information Around the World
 
 
-![Image](https://github.com/user-attachments/assets/65f392e4-1e3f-421c-b53f-9a9adb56ca1c)
+![image](https://github.com/user-attachments/assets/bbb49a95-5f64-41cd-b483-d58823e525ad)
 
 
 ## About
