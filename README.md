@@ -42,7 +42,7 @@ git clone https://github.com/CL0001/weather-prophet.git
 ```
 
 ### 2. Run the REST API with Docker
-Navigate to the `WeatherProphet.api` directory and build the Docker container, note this may take a few minutes:
+Navigate to the `weather-prophet-api` directory and build the Docker container, note this may take a few minutes:
 ```bash
 docker build -t weather-prophet-api .
 docker run -d -p 8080:80 weather-prophet-api
