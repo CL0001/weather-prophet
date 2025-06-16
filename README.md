@@ -49,5 +49,5 @@ docker run -d -p 8080:80 weather-prophet-api
 ```
 ### 3. Open and Build the Application in QtCreator
 1. Open QtCreator.
-2. Click **"Open Project"** and select `CMakeLists.txt` from the `WeatherProphet.app` directory
+2. Click **"Open Project"** and select `CMakeLists.txt` from the `weather-prophet-app` directory
 3. Configure the project as needed, then build and run it.
