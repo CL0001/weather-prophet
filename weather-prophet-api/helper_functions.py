@@ -70,15 +70,15 @@ def format_response(weather_data, model):
         "sunset": timestamp_to_datetime(weather_data["sys"]["sunset"]),
 
         "day1": days[0],
-        "value1": round(float(fahrenheit_to_celsius(prediction[0])), 1),
+        "value1": f"{min(round(float(fahrenheit_to_celsius(prediction[0])), 1), round(float(fahrenheit_to_celsius(prediction[1])), 1))} - {max(round(float(fahrenheit_to_celsius(prediction[0])), 1), round(float(fahrenheit_to_celsius(prediction[1])), 1))}°C",
         "day2": days[1],
-        "value2": round(float(fahrenheit_to_celsius(prediction[1])), 1),
+        "value2": f"{min(round(float(fahrenheit_to_celsius(prediction[2])), 1), round(float(fahrenheit_to_celsius(prediction[3])), 1))} - {max(round(float(fahrenheit_to_celsius(prediction[2])), 1), round(float(fahrenheit_to_celsius(prediction[3])), 1))}°C",
         "day3": days[2],
-        "value3": round(float(fahrenheit_to_celsius(prediction[2])), 1),
+        "value3": f"{min(round(float(fahrenheit_to_celsius(prediction[4])), 1), round(float(fahrenheit_to_celsius(prediction[5])), 1))} - {max(round(float(fahrenheit_to_celsius(prediction[4])), 1), round(float(fahrenheit_to_celsius(prediction[5])), 1))}°C",
         "day4": days[3],
-        "value4": round(float(fahrenheit_to_celsius(prediction[3])), 1),
+        "value4": f"{min(round(float(fahrenheit_to_celsius(prediction[6])), 1), round(float(fahrenheit_to_celsius(prediction[7])), 1))} - {max(round(float(fahrenheit_to_celsius(prediction[6])), 1), round(float(fahrenheit_to_celsius(prediction[7])), 1))}°C",
         "day5": days[4],
-        "value5": round(float(fahrenheit_to_celsius(prediction[4])), 1),
+        "value5": f"{min(round(float(fahrenheit_to_celsius(prediction[8])), 1), round(float(fahrenheit_to_celsius(prediction[9])), 1))} - {max(round(float(fahrenheit_to_celsius(prediction[8])), 1), round(float(fahrenheit_to_celsius(prediction[9])), 1))}°C"
     }
 
 

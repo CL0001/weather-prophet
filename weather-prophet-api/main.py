@@ -15,6 +15,7 @@ from helper_functions import format_response, format_query, format_for_database
 from database import *
 
 load_dotenv()
+api_key = os.getenv("OPENWEATHER_API_KEY")
 
 model = WeatherProphet()
 model.load_state_dict(torch.load("weather_prophet_model.pth", weights_only=False))
@@ -46,7 +47,6 @@ def city_weather_data(name: str, db: Session = Depends(get_db)):
             if city_location is None:
                 raise ValueError("City not found")
 
-            api_key = os.getenv('openweather_key')
             if not api_key:
                 raise EnvironmentError("OpenWeather API key not found in environment variables")
 
